@@ -1,10 +1,11 @@
-import "jsr:@supabase/functions-js/edge-runtime.d.ts";
-import { openai } from "npm:@ai-sdk/openai";
-import { createClient } from "npm:@supabase/supabase-js@2";
-import { generateObject } from "npm:ai";
-import { z } from "npm:zod@4.1.13";
-import { type Database } from "../../../src/lib/database.types.ts";
-import { type TriviaRoundGenerationDTO } from "../../../src/lib/dto.types.ts";
+import "functions-js";
+import { createClient } from "supabase-js";
+import { openai } from "@ai-sdk/openai";
+import { generateObject } from "ai";
+import { z } from "zod";
+import { type Database } from "@/lib/database.types.ts";
+import { type TriviaRoundGenerationDTO } from "@/lib/dto.types.ts";
+import { retry } from "jsr:@std/async@1.0.15";
 
 // The reason why I'm not going to have an array of wrong answers is because I want to constrain the LLM as much as possible.
 const triviaSchema = z.object({

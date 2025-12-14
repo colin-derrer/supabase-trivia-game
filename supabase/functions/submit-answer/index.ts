@@ -1,8 +1,8 @@
-import "jsr:@supabase/functions-js/edge-runtime.d.ts";
-import { createClient } from "npm:@supabase/supabase-js@2";
-import * as z from "npm:zod@4.1.13";
-import { type Database } from "../../../src/lib/database.types.ts";
-import { type TriviaGuessDTO } from "../../../src/lib/dto.types.ts";
+import "functions-js";
+import { createClient } from "supabase-js";
+import * as z from "zod";
+import { type Database } from "@/lib/database.types.ts";
+import { type TriviaGuessDTO } from "@/lib/dto.types.ts";
 
 const requestSchema = z.object({
   triviaId: z.number().int(),
