@@ -12,13 +12,11 @@ CREATE TABLE public.trivia_rounds (
   CONSTRAINT trivia_rounds_pkey PRIMARY KEY (id)
 );
 
-CREATE INDEX "trivia_rounds_created_at_idx" ON public."trivia_rounds" USING btree (created_at);
-
 alter table public."trivia_rounds"
 enable row level security;
 
 create policy "Enable read access for all users"
-on "public"."trivia_rounds"
+on public."trivia_rounds"
 as PERMISSIVE
 for SELECT
 to public

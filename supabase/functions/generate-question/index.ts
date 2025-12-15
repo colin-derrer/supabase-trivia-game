@@ -71,9 +71,7 @@ Deno.serve(async () => {
     }
 
     if (answers[correctAnswerIdx] !== llmResponse.correct_answer)
-      throw new Error(
-        "Why Unit Testing Is Important: A Novel About Sanity Checks",
-      );
+      throw new Error("Why Unit Testing Is Important: A Memoir");
 
     const { data: triviaDataArray, error: supabaseError } = await supabase
       .from("trivia_rounds")
